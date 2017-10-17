@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript">
+        window.onload = function () {
+
+            var dataLength = 0;
+            var data = [];
+            var updateInterval = 500;
+            updateChart();
+            function updateChart() {
+
+                $.getJSON("db/data.php", function (result) {
+                    if (dataLength !== result.length) {
+                        for (var i = dataLength; i < result.length; i++) {
+                            data.push({
+                                label: result[i].fecha,
+                                X: parseInt(i),
+                                y: parseInt(result[i].temperatura)
+                            });
+                        }
+                        dataLength = result.length;
+                        chart.render();
+                    }
+                });
+
+                //$contents = file_get_contents("");
+//$contents = utf8_encode($contents);
+
+
+            }
+
+            var chart = new CanvasJS.Chart("chartContainer", {
+                theme: "light1", // "light2", "dark1", "dark2"
+                animationEnabled: false, // change to true
+                title: {
+                    text: "Basic Column Chart"
+                },
+                data: [
+                    {
+                        // Change type to "bar", "area", "spline", "pie",etc.
+                        type: "line",
+                        dataPoints: data
+                    }
+                ]
+            });
+            setInterval(function () {
+                updateChart()
+            }, updateInterval);
+
+        }
+    </script>
+</head>
+<body>
+<div id="chartContainer" style="height: 370px; width: 100%;"></div>
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+<meta charset="utf-8">
+<script src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+</body>
+</html>
