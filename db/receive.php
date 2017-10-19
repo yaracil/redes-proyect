@@ -1,22 +1,25 @@
 <?php
-   $a=$_GET['a'];
-   $b=$_GET['b'];
-   $c=$_GET['c'];
-   $d=$_GET['d'];
-   echo "<p>variable a : $a";
-   echo "<p>variable b : $b";
-   echo "<p>variable c : $c";
-   echo "<p>variable d : $d";
-   ini_set('date.timezone','America/Mexico_City');
-   echo date("<p>j/m/Y G:i:s");
-   $f=date("j/m/Y G:i:s");
-   if($a== '0'){
-   $fp = fopen('texto.txt', 'w');
-   fwrite($fp, "$a,$b,$c,$d,$f\n");
-   fclose($fp);
-   }else{$fp = fopen('texto.txt', 'a');
-   fwrite($fp, "$a,$b,$c,$d,$f\n");
-   fclose($fp);
-   }
-?>
+
+//$number = $_GET['a'];
+$heart_rate = $_GET['b'];
+$temperature = $_GET['c'];
+$humidity = $_GET['d'];
+
+ini_set('date.timezone', 'America/Mexico_City');
+$now = date("Y-m-d H:i:s");
+$result = 0;
+//$query = $bd->exec("INSERT INTO arduino(number,date,heart_rate,temperature,humidity) VALUES ('$number','$now','$heart_rate','$temperature','$humidity');");
+
+$db = new SQLite3('arduino.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+if ($db->exec("INSERT INTO temperature (temperature, date) VALUES ('$temperature', '$now')") == false)
+    $result++;
+if ($db->exec("INSERT INTO heart_rate (heart_rate, date) VALUES ('$heart_rate', '$now')") == false)
+    $result++;
+if ($db->exec("INSERT INTO humidity (humidity, date) VALUES ('$humidity', '$now')") == false)
+    $result++;
+
+echo($result);
+
+//echo date("INSERT INTO arduino(number,date,heart_rate,temperature,humidity) VALUES ('$number','$now','$heart_rate','$temperature','$humidity');");
+
 

@@ -11,8 +11,8 @@ queue_event = Queue()
 '''Capture UDP packages'''
 def get_udp_package():
   hostName = socket.gethostbyname('0.0.0.0')
-  UDP_IP = "132.248.29.124"
-  #UDP_IP = "127.0.0.1"
+  #UDP_IP = "132.248.29.124"
+  UDP_IP = "127.0.0.1"
   UDP_PORT = 5005
   sock = socket.socket(socket.AF_INET, # Internet
                      socket.SOCK_DGRAM) # UDP
@@ -25,9 +25,11 @@ def get_udp_package():
 
 '''Save UDP information'''
 def save_information():
-  conn = sqlite3.connect('example.db')
+  conn = sqlite3.connect('arduino.db')
   c = conn.cursor() 
-  c.execute('''CREATE TABLE IF NOT EXISTS arduino (heart_rate text, temperature text, humidity text)''')
+  c.execute('''CREATE TABLE IF NOT EXISTS temperature (PatternID INTEGER PRIMARY KEY AUTOINCREMENT, temperature TEXT, Date TEXT''')
+  c.execute('''CREATE TABLE IF NOT EXISTS heart_rate (PatternID INTEGER PRIMARY KEY AUTOINCREMENT, heart_rate TEXT, Date TEXT''')
+  c.execute('''CREATE TABLE IF NOT EXISTS humidity (PatternID INTEGER PRIMARY KEY AUTOINCREMENT, humidity TEXT, Date TEXT''')
   while True:
 	conn = sqlite3.connect('arduino.db')
 	c = conn.cursor()
@@ -37,6 +39,11 @@ def save_information():
 		keys = result.keys() #obteniendo las propiedades
         	values = result.values()
         	c.execute("INSERT INTO arduino("+', '.join(keys)+") VALUES ("+', '.join(values)+")") #Salvar en DB
+
+            #asi seria en php las variables son las que tienen el $ :P
+        	#c.execute("INSERT INTO temperature (temperature, date) VALUES ('$temperature', '$now')
+        	#c.execute("INSERT INTO heart_rate (heart_rate, date) VALUES ('$heart_rate', '$now')
+        	#c.execute("INSERT INTO humidity (humidity, date) VALUES ('$humidity', '$now')
         	conn.commit()
 	conn.close()
 	time.sleep(9)
