@@ -1,22 +1,25 @@
 <?php
 
+$db = new SQLite3('arduino.db', SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE);
+if (true) {
+    //datos de prueba
+    ini_set('date.timezone', 'America/Mexico_City');
+    $now = date("Y-m-d H:i:s");
+    $i = 0;
+    $resul = 0;
+    $db->exec("CREATE TABLE IF NOT EXISTS arduino (PatternID INTEGER PRIMARY KEY AUTOINCREMENT, heart_rate TEXT, temperature TEXT, humidity TEXT, date TEXT);");
+    while ($i < 50) {
+        $temp = rand(3, 40);
+        $ritm = rand(1, 5);
+        $hum = rand(10, 100);
 
-$bd = new SQLite3('example.db');
-$data_points = array();
-$results = $bd->query('SELECT * FROM arduino');
-
-while ($row = $results->fetchArray()) {
-    $point = array("fecha"=> $row['3'], "temperatura" => $row['1']);
-    array_push($data_points, $point);
+        if ($db->exec("INSERT INTO arduino (heart_rate, temperature, humidity, date) VALUES ('$ritm', '$temp', '$hum', '$now')") == 1)
+            $resul++;
+        $now = date("Y-m-d H:i:s", mktime(date('s') + $i));
+        $i++;
+        sleep(1);
+    }
 }
-header("Content-type:application/json");
-echo json_encode($data_points);
-
-
-/*echo json_encode([
-    "one" => "Singular sensation",
-    "two" => "Beady little eyes",
-    "three" => "Little birds pitch by my doorstep"
-]);*/
-
+$db->close();
+echo $resul;
 ?>

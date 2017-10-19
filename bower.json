@@ -1,0 +1,33 @@
+{
+  "name": "redes-proyect",
+  "homepage": "https://github.com/yoecuba/redes-proyect",
+  "authors": [
+    "yoecuba <yhacaribe@gmail.com>"
+  ],
+  "dependencies": {
+    "highcharts": "*",
+    "bootstrap": "^4.0.0-beta",
+    "datatables.net-bs4": "1.10.15",
+    "font-awesome": "4.7.0",
+    "jquery": "^3.2.1",
+    "jquery.easing": "^1.4.1",
+    "popper.js": "1.12.3"
+  },
+  "devDependencies": {
+    "browser-sync": "2.18.13",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "3.7.0",
+    "gulp-header": "1.8.9",
+    "gulp-html-beautify": "^1.0.1",
+    "gulp-pug": "^3.3.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "3.0.0"
+  },
+  "description": "Equipo5",
+  "main": "index.html",
+  "keywords": [
+    "livecharts"
+  ],
+  "license": "MIT"
+}

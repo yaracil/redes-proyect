@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Por tu Salud</title>
+    <!-- Bootstrap core CSS-->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom fonts for this template-->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template-->
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="bower_components/highcharts/css/highcharts.css">
+</head>
+
+<body class="fixed-nav sticky-footer bg-dark" id="page-top">
+<!-- Navigation-->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
+    <img src="assets/images/saludd.png" style="width: 60px; height: auto;  margin-top: 0px">
+    <a class="navbar-brand" href="index.html" style="margin: 10px;">Por tu Salud</a>
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+            data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+            aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Panel de control">
+                <a class="nav-link" href="index.html">
+                    <i class="fa fa-fw fa-dashboard"></i>
+                    <span class="nav-link-text">Panel de control</span>
+                </a>
+            </li>
+            <li>
+
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gráficos en tiempo real">
+                <a class="nav-link" href="index.html">
+                    <i class="fa fa-fw fa-area-chart"></i>
+                    <span class="nav-link-text">Gráficos en tiempo real</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Control remoto del agente">
+                <a class="nav-link" href="#">
+                    <i class="fa fa-fw fa-volume-control-phone"></i>
+                    <span class="nav-link-text">Control remoto del agente</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Datos histórios">
+                <a class="nav-link" href="pages/tables.html">
+                    <i class="fa fa-fw fa-table"></i>
+                    <span class="nav-link-text">Datos histórios</span>
+                </a>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Información del paciente">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-file"></i>
+                    <span class="nav-link-text">Información del paciente</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseComponents">
+                    <li>
+                        <a href="pages/historia_clinica.html">Historia clínica</a>
+                    </li>
+                    <li>
+                        <a href="pages/informacion_personal.html">Información personal</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Administrar sesión">
+                <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseExamplePages"
+                   data-parent="#exampleAccordion">
+                    <i class="fa fa-fw fa-wrench"></i>
+                    <span class="nav-link-text">Administrar sesión</span>
+                </a>
+                <ul class="sidenav-second-level collapse" id="collapseExamplePages">
+                    <li>
+                        <a href="pages/login.html">Iniciar sesión</a>
+                    </li>
+                    <li>
+                        <a href="pages/register.html">Registrarse</a>
+                    </li>
+                    <li>
+                        <a href="pages/forgot-password.html">Olvidé mi contraseña</a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="navbar-nav sidenav-toggler">
+            <li class="nav-item">
+                <a class="nav-link text-center" id="sidenavToggler">
+                    <i class="fa fa-fw fa-angle-left"></i>
+                </a>
+            </li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle mr-lg-2" id="alertsDropdown" href="#" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false">
+                    <i class="fa fa-fw fa-bell"></i>
+            <span class="d-lg-none">Alertas
+              <span class="badge badge-pill badge-warning">6 New</span>
+            </span>
+            <span class="indicator text-warning d-none d-lg-block">
+              <i class="fa fa-fw fa-circle"></i>
+            </span>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="alertsDropdown">
+                    <h6 class="dropdown-header">Nuevas Alertas:</h6>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Actualización de estado</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">Esta es una respuesta automática del servidor. Todos los
+                            sistemas están conectados.
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-danger">
+                <strong>
+                  <i class="fa fa-long-arrow-down fa-fw"></i>Actualización de estado</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">Agente No.1 está conectado
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">
+              <span class="text-success">
+                <strong>
+                  <i class="fa fa-long-arrow-up fa-fw"></i>Actualización de estado</strong>
+              </span>
+                        <span class="small float-right text-muted">11:21 AM</span>
+                        <div class="dropdown-message small">Agente No.1 está enviando información en tiempo real.
+                        </div>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item small" href="#">Ver todas las alertas</a>
+                </div>
+            </li>
+            <li class="nav-item">
+                <form class="form-inline my-2 my-lg-0 mr-lg-2">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="button">
+                  <i class="fa fa-search"></i>
+                </button>
+              </span>
+                    </div>
+                </form>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
+                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-fluid">
+        <!-- Breadcrumbs-->
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item "><a href="index.html">Panel de control</a></li>
+            <li class="breadcrumb-item active">Gráficos en tiempo real</li>
+        </ol>
+        <!-- Area Chart Example-->
+        <!--<div class="row">
+            <div class="col-lg-5">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-area-chart"></i> Sensor de temperatura
+                    </div>
+                    <div class="card-body">
+                        <div id="container8" width="100%" height="30"></div>
+                    </div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-area-chart"></i> Sensor de Humedad
+                    </div>
+                    <div id="container9" class="card-body" style="width: auto; height: auto;  margin: auto;"></div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
+            <div class="col-lg-5">
+                <div class="card mb-3">
+                    <div class="card-header">
+                        <i class="fa fa-area-chart"></i> Sensor de Rítmo cardiaco
+                    </div>
+                    <div id="container89" class="card-body" style="width: auto; height: auto;  margin: auto;"></div>
+                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                </div>
+            </div>
+        </div>-->
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-area-chart"></i> Sensor de Rítmo cardiaco
+            </div>
+            <div id="container1" class="card-body"></div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-area-chart"></i> Sensor de temperatura
+            </div>
+            <div class="card-body">
+                <div id="container2"></div>
+            </div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+        <div class="card mb-3">
+            <div class="card-header">
+                <i class="fa fa-area-chart"></i> Sensor de Humedad
+            </div>
+            <div id="container3" class="card-body"></div>
+            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+        </div>
+
+
+    </div>
+    <!-- /.container-fluid-->
+    <!-- /.content-wrapper-->
+    <footer class="sticky-footer">
+        <div class="container">
+            <div class="text-center">
+                <small>Copyright © Your Website 2017</small>
+            </div>
+        </div>
+    </footer>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fa fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="pages/login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/popper/popper.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin.min.js"></script>
+    <!-- Custom scripts for this page-->
+    <!-- Toggle between fixed and static navbar-->
+    <script>
+        $('#toggleNavPosition').click(function () {
+            $('body').toggleClass('fixed-nav');
+            $('nav').toggleClass('fixed-top static-top');
+        });
+
+    </script>
+    <!-- Toggle between dark and light navbar-->
+    <script>
+        $('#toggleNavColor').click(function () {
+            $('nav').toggleClass('navbar-dark navbar-light');
+            $('nav').toggleClass('bg-dark bg-light');
+            $('body').toggleClass('bg-dark bg-light');
+        });
+
+    </script>
+
+    <script src="bower_components/highcharts/js/highcharts.js"></script>
+    <script src="bower_components/highcharts/js/modules/exporting.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            //var chart; // global
+            var chart;
+            /**
+             * Request data from the server, add it to the graph and set a timeout to request again
+             */
+            /*        function requestData() {
+             $.ajax({
+             url: 'URL servidor',
+             success: function (point) {
+             var series = chart.series[0],
+             shift = series.data.length > 20; // shift if the series is longer than 20
+
+             // add the point
+             chart.series[0].addPoint(eval(point), true, shift);
+
+             // call it again after one second
+             setTimeout(requestData, 1000);
+             },
+             cache: false
+             });
+             }*/
+            var temperaturePoint = 0;
+            var humedadPoint = 0;
+            var ritmoCardiacoPoint = 0;
+            var fechaPoint = (new Date()).getTime();
+            //z = updateDatos();
+            function updateDatos() {
+                $.getJSON("db/gettingdb.php?option=update", function (result) {
+                    fechaPointt = (new Date(result[0].fecha)).getTime();
+                    humedadPointt = parseInt(result[0].humedad);
+                    temperaturePointt = parseInt(result[0].temperatura);
+                    ritmoCardiacoPointt = parseInt(result[0].ritmo_cardiaco);
+                });
+                temperaturePoint = temperaturePointt;
+                humedadPoint = humedadPointt;
+                ritmoCardiacoPoint = ritmoCardiacoPointt;
+                fechaPoint = fechaPointt;
+                //return true;
+            }
+
+            Highcharts.setOptions({
+                global: {
+                    useUTC: false
+                }
+            });
+
+            Highcharts.chart('container1', {
+                chart: {
+                    type: 'spline',
+                    animation: Highcharts.svg, // don't animate in old IE
+                    marginRight: 10,
+                    events: {
+                        load: function () {
+                            // set up the updating of the chart each second
+                            var series = this.series[0];
+                            setInterval(function () {
+                                updateDatos();
+                                var shift = series.data.length > 30;
+                                series.addPoint([fechaPoint, ritmoCardiacoPoint], true, shift);
+                            }, 1000);
+                        }
+                    }
+                },
+                title: {
+                    text: 'Ritmo Cardiaco'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 100
+                },
+                yAxis: {
+                    title: {
+                        text: '[latidos/s]'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                                Highcharts.numberFormat(this.y, 2);
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Random data',
+                    data: (function () {
+                        // generate an array of random data
+                        var data = [];
+
+
+                        return data;
+                    }())
+                }]
+            });
+
+            Highcharts.chart('container2', {
+                chart: {
+                    type: 'spline',
+                    animation: Highcharts.svg, // don't animate in old IE
+                    marginRight: 10,
+                    events: {
+                        load: function () {
+                            var series = this.series[0];
+                            setInterval(function () {
+                                var shift = series.data.length > 30;
+                                series.addPoint([fechaPoint, temperaturePoint], true, shift);
+                            }, 1000);
+                        }
+                    }
+                },
+                title: {
+                    text: 'Sensor de temperatura'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 200
+                },
+                yAxis: {
+                    title: {
+                        text: '°C'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                                Highcharts.numberFormat(this.y, 2);
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Lectura',
+                    data: (function () {
+                        // generate an array of random data
+                        var data = [];
+                        return data;
+                    }())
+                }]
+            });
+
+            Highcharts.chart('container3', {
+                chart: {
+                    type: 'spline',
+                    animation: Highcharts.svg, // don't animate in old IE
+                    marginRight: 10,
+                    events: {
+                        load: function () {
+                            var series = this.series[0];
+                            setInterval(function () {
+                                var shift = series.data.length > 30;
+                                series.addPoint([fechaPoint, humedadPoint], true, shift);
+                            }, 1000);
+                        }
+                    }
+                },
+                title: {
+                    text: 'Sensor de humedad'
+                },
+                xAxis: {
+                    type: 'datetime',
+                    tickPixelInterval: 200
+                },
+                yAxis: {
+                    title: {
+                        text: '°C'
+                    },
+                    plotLines: [{
+                        value: 0,
+                        width: 1,
+                        color: '#808080'
+                    }]
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                                Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
+                                Highcharts.numberFormat(this.y, 2);
+                    }
+                },
+                legend: {
+                    enabled: false
+                },
+                exporting: {
+                    enabled: false
+                },
+                series: [{
+                    name: 'Lectura',
+                    data: (function () {
+                        // generate an array of random data
+                        var data = [];
+                        return data;
+                    }())
+                }]
+            });
+
+        });
+    </script>
+</div>
+</body>
+
+</html>
