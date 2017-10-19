@@ -1,15 +1,11 @@
-# Simulador para el envio de datos
 import sys
-from socket import socket, AF_INET, SOCK_DGRAM
+import socket
 
-UDP_IP = "132.248.29.124"
+UDP_IP = "127.0.0.1"
 UDP_PORT = 5005
-MESSAGE = "{'temperatura':'50','ritmo_cardiaco':'333','pulso':'150'}"
-print ("Test client sending packets to IP {0}, via port {1}\n".format(UDP_IP, UDP_PORT))
-print "UDP target IP:", UDP_IP
-print "UDP target port:", UDP_PORT
-print "message:", MESSAGE
-
-sock = socket( AF_INET, SOCK_DGRAM)
+MESSAGE = sys.argv[1]
+ 
+print MESSAGE
+sock = socket.socket(socket.AF_INET, # Internet
+                      socket.SOCK_DGRAM) # UDP
 sock.sendto(MESSAGE, (UDP_IP, UDP_PORT))
-sys.exit()

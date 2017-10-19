@@ -20,10 +20,10 @@ try{
   /* Para conectarse o crear la base de datos
      Se crea el objeto PDO para controlar la conexion de la base de datos */
   $db = new PDO($db_path) or die("error");
-
+  $i=0;
   if($vista1){
     $query =  "SELECT * FROM arduino";    
-    while($i=10){
+    while($i <= 2){
       //Se crea la consulta en lenguaje SQL
       
       /* Metodo del objeto PDO para ejecutar el select
@@ -33,9 +33,10 @@ try{
 	{
 	  print_r($row);
 	  echo "<p>\n";
+	  print $row['id'] . "\t";	  
 	  print $row['heart_rate'] . "\t";
 	  print $row['temperature'] . "\t";
-	  print $row['humidity'] . "\n";
+	  print $row['humidity'] . "\t";
 	  print $row['date'] . "\n";
 	  echo "<p>\n";
 	}
@@ -46,9 +47,10 @@ try{
   if($vista2)
     {
       //Se crea el string de SQL
-      $query =  "SELECT * FROM arduino";
-      while($i=10){
-	print "id\t heart_rate\t temperature\t humidity\t date\t <p>\n";
+      $query = "SELECT * FROM arduino";
+      while($i <= 2){
+	echo "<p>---------- # Consulta [$i] ----------<p>\n";	
+    	print "id\t heart_rate\t temperature\t humidity\t date\t <p>\n";      	
 	foreach ($db->query($query) as $row)
 	  {
 	    //print_r($row);
@@ -56,8 +58,8 @@ try{
 	    print $row['id'] . "\t";      
 	    print $row['heart_rate'] . "\t";
 	    print $row['temperature'] . "\t";
-	    print $row['humidity'] . "\n";
-	    print $row['date'] . "<p>\n";        
+	    print $row['humidity'] . "\t";
+	    print $row['date'] . "\n";
 	  }
 	$i++;
       }

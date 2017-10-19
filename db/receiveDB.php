@@ -39,9 +39,9 @@ if($_GET && $_GET['a'] != 0){
   /* Para conectarse o crear la base de datos
      Se crea el objeto PDO para controlar la conexion de la base de datos */
   $db = new PDO($db_path) or die("error");
-  $stmt = $db -> prepare("CREATE TABLE IF NOT EXISTS arduino (id INTEGER PRIMARY KEY, heart_rate INTEGER, temperature INTEGER, humidity INTEGER, date TEXT);");
+  //$stmt = $db -> prepare("CREATE TABLE IF NOT EXISTS arduino (id INTEGER, heart_rate INTEGER, temperature INTEGER, humidity INTEGER, date TEXT);");
   /* Se ejecuta el query */
-  if ( $stmt -> execute() ) { if(debug){echo "<p>Table is created.<p>\n";}}
+  //if ( $stmt -> execute() ) { if(debug){echo "<p>Table is created.<p>\n";}}
 
   //Se crea la consulta en lenguaje SQL
   //$query =  "SELECT * FROM arduino";
