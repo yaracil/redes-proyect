@@ -316,6 +316,27 @@
              cache: false
              });
              }*/
+            var temperaturePoint = 0;
+            var humedadPoint = 0;
+            var ritmoCardiacoPoint = 0;
+            var fechaPoint = new Date("Y-m-d H:i:s");
+
+            function updateDatos() {
+                // alert("hello");
+                $.getJSON("db/gettingdb.php?update", function (result) {
+                    //alert("hello");
+                    fechaPointt = new Date(result[0].fecha);
+                    humedadPointt = parseInt(result[0].humedad);
+                    temperaturePointt = parseInt(result[0].temperatura);
+                    ritmoCardiacoPointt = parseInt(result[0].ritmo_cardiaco);
+
+                    //return {fechaPoint, humedadPoint, temperaturePoint, ritmoCardiacoPoint};
+                });
+                temperaturePoint = temperaturePointt;
+                humedadPoint = humedadPointt;
+                ritmoCardiacoPoint = ritmoCardiacoPointt;
+                fechaPoint = fechaPointt;
+            }
 
             Highcharts.setOptions({
                 global: {
@@ -334,6 +355,7 @@
                             // set up the updating of the chart each second
                             var series = this.series[0];
                             setInterval(function () {
+
                                 var x = (new Date()).getTime(), // current time
                                         y = Math.random();
                                 series.addPoint([x, y], true, true);
@@ -366,7 +388,7 @@
                     }
                 },
                 legend: {
-                    enabled: false
+                    enabled: true
                 },
                 exporting: {
                     enabled: false
@@ -397,17 +419,22 @@
                     events: {
                         load: function () {
 
+                            /*                     // set up the updating of the chart each second
+                             var series = this.series[0];
+                             setInterval(function () {
+                             var x = (new Date()).getTime(), // current time
+                             y = Math.random();
+                             series.addPoint([x, y], true, true);
+                             }, 1000);*/
+
                             // set up the updating of the chart each second
+
                             var series = this.series[0];
                             setInterval(function () {
-                                var y, x = (new Date()).getTime(); // current time
+                                updateDatos();
+                                var shift = series.data.length > 10;
+                                series.addPoint([fechaPoint, temperaturePoint], true, shift);
 
-                                $.getJSON("db/temperatura.php?option=update", function (result) {
-                                            yy = parseInt(result.temperatura);
-                                        }
-                                );
-                                //alert(y);
-                                series.addPoint([x, yy], true, true);
                             }, 1000);
                         }
                     }
@@ -417,7 +444,7 @@
                 },
                 xAxis: {
                     type: 'datetime',
-                    tickPixelInterval: 20000
+                    tickPixelInterval: 200
                 },
                 yAxis: {
                     title: {
@@ -445,21 +472,14 @@
                 series: [{
                     name: 'Lectura',
                     data: (function () {
-                        var datos = [];
-                        $.getJSON("db/temperatura.php", function (result) {
-                            var i, dataLength = result.length;
-                            // var time = (new Date()).getTime();
-                            for (i = dataLength - 1; i >= 0; i--) {
-                                datos.push({
-                                    x: new Date(result[i].fecha),
-                                    y: parseInt(result[i].temperatura)
-                                });
-                            }
-
+                        // generate an array of random data
+                        var data = [];
+                        data.push({
+                            x: fechaPoint,
+                            y: temperaturePoint
                         });
-                        //alert(datos);
-                        datos.reverse();
-                        return datos;
+
+                        return data;
                     }())
                 }]
             });
@@ -471,20 +491,19 @@
                     marginRight: 10,
                     events: {
                         load: function () {
-
-                            // set up the updating of the chart each second
                             var series = this.series[0];
                             setInterval(function () {
-                                var x = (new Date()).getTime(), // current time
-                                        y = Math.random();
-                                series.addPoint([x, y], true, true);
-                            }, 1000);
+                                /*                                var y, x = (new Date()).getTime(); // current time
 
+                                 y = yy;
+                                 var shift = series.data.length > 10;
+                                 series.addPoint([x, y], true, shift);*/
+                            }, 1000);
                         }
                     }
                 },
                 title: {
-                    text: 'Sensor de Humedad'
+                    text: 'Sensor de humedad'
                 },
                 xAxis: {
                     type: 'datetime',
@@ -492,7 +511,7 @@
                 },
                 yAxis: {
                     title: {
-                        text: '%'
+                        text: '°C'
                     },
                     plotLines: [{
                         value: 0,
@@ -506,7 +525,6 @@
                                 Highcharts.dateFormat('%Y-%m-%d %H:%M:%S', this.x) + '<br/>' +
                                 Highcharts.numberFormat(this.y, 2);
                     }
-                    //%Y-%m-%d %H:%M:%S
                 },
                 legend: {
                     enabled: false
@@ -517,25 +535,20 @@
                 series: [{
                     name: 'Lectura',
                     data: (function () {
-                        var datos = [];
-                        $.getJSON("db/humedad.php", function (result) {
-                            var dataLength = result.length;
-                            // var time = (new Date()).getTime();
-                            if (dataLength !== 0) {
-                                for (var i = dataLength - 1; i >= 0; i--) {
-                                    datos.push({
-                                        x: new Date(result[i].fecha),
-                                        y: parseInt(result[i].humidity)
-                                    });
-                                }
-                            }
-                        });
-                        //alert(datos);
-                        return datos;
+                        // generate an array of random data
+                        var data = [],
+                                time = (new Date()).getTime(),
+                                i;
+                        for (i = -1; i <= 0; i += 1) {
+                            data.push({
+                                x: time + i * 1000,
+                                y: 0
+                            });
+                        }
+                        return data;
                     }())
                 }]
             });
-
 
         });
     </script>
