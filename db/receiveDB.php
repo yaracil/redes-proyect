@@ -25,7 +25,9 @@ if($_GET && $_GET['a'] != 0){
   $hora = date("H");
   $min = date("i");
   $seg = date("s");
-  $date=$dia.$mes.$year.$hora.$min.$seg;  
+  $now = date("Y-m-d H:i:s");
+  //$date=$dia.$mes.$year.$hora.$min.$seg;
+  $date=$now;  
   if($debug){
   print "Var set<p>\n";
   print "Formato de fecha DiaMesA~oHoraMinSeg<p>\n";
@@ -39,7 +41,8 @@ if($_GET && $_GET['a'] != 0){
   /* Para conectarse o crear la base de datos
      Se crea el objeto PDO para controlar la conexion de la base de datos */
   $db = new PDO($db_path) or die("error");
-  $stmt = $db -> prepare("CREATE TABLE IF NOT EXISTS arduino (id INTEGER, heart_rate INTEGER, temperature INTEGER, humidity INTEGER, date TEXT);");
+  //$stmt = $db -> prepare("CREATE TABLE IF NOT EXISTS arduino (id INTEGER, heart_rate INTEGER, temperature INTEGER, humidity INTEGER, date TEXT);");
+  $stmt = $db -> prepare("CREATE TABLE IF NOT EXISTS arduino (id INTEGER, heart_rate TEXT, temperature TEXT, humidity TEXT, date TEXT);");  
   /* Se ejecuta el query */
   if ( $stmt -> execute() ) { if(debug){echo "<p>Table is created.<p>\n";}}
 
