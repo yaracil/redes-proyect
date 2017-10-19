@@ -20,7 +20,7 @@
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <img src="assets/images/saludd.png" style="width: 60px; height: auto;">
+    <img src="assets/images/saludd.png" style="width: 60px; height: auto;  margin-top: 0px">
     <a class="navbar-brand" href="index.html" style="margin: 10px;">Por tu Salud</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
@@ -293,28 +293,47 @@
     <script src="bower_components/highcharts/js/modules/exporting.js"></script>
 
     <script type="text/javascript">
-        var temperaturePoint = -100;
-        var humedadPoint = -100;
-        var ritmoCardiacoPoint = -100;
-        var fechaPoint = (new Date()).getTime();
-
-        function updateDatos() {
-            $.getJSON("db/gettingdb.php?option=update", function (result) {
-                fechaPointt = (new Date(result[0].fecha)).getTime();
-                humedadPointt = parseInt(result[0].humedad);
-                temperaturePointt = parseInt(result[0].temperatura);
-                ritmoCardiacoPointt = parseInt(result[0].ritmo_cardiaco);
-            });
-            temperaturePoint = temperaturePointt;
-            humedadPoint = humedadPointt;
-            ritmoCardiacoPoint = ritmoCardiacoPointt;
-            fechaPoint = fechaPointt;
-            //return true;
-        }
-
         $(document).ready(function () {
 
+            //var chart; // global
             var chart;
+            /**
+             * Request data from the server, add it to the graph and set a timeout to request again
+             */
+            /*        function requestData() {
+             $.ajax({
+             url: 'URL servidor',
+             success: function (point) {
+             var series = chart.series[0],
+             shift = series.data.length > 20; // shift if the series is longer than 20
+
+             // add the point
+             chart.series[0].addPoint(eval(point), true, shift);
+
+             // call it again after one second
+             setTimeout(requestData, 1000);
+             },
+             cache: false
+             });
+             }*/
+            var temperaturePoint = 0;
+            var humedadPoint = 0;
+            var ritmoCardiacoPoint = 0;
+            var fechaPoint = (new Date()).getTime();
+            //z = updateDatos();
+            function updateDatos() {
+                $.getJSON("db/gettingdb.php?option=update", function (result) {
+                    fechaPointt = (new Date(result[0].fecha)).getTime();
+                    humedadPointt = parseInt(result[0].humedad);
+                    temperaturePointt = parseInt(result[0].temperatura);
+                    ritmoCardiacoPointt = parseInt(result[0].ritmo_cardiaco);
+                });
+                temperaturePoint = temperaturePointt;
+                humedadPoint = humedadPointt;
+                ritmoCardiacoPoint = ritmoCardiacoPointt;
+                fechaPoint = fechaPointt;
+                //return true;
+            }
 
             Highcharts.setOptions({
                 global: {
@@ -334,8 +353,7 @@
                             setInterval(function () {
                                 updateDatos();
                                 var shift = series.data.length > 30;
-                                if (ritmoCardiacoPoint != -100)
-                                    series.addPoint([fechaPoint, ritmoCardiacoPoint], true, shift);
+                                series.addPoint([fechaPoint, ritmoCardiacoPoint], true, shift);
                             }, 1000);
                         }
                     }
@@ -374,8 +392,10 @@
                     name: 'Random data',
                     data: (function () {
                         // generate an array of random data
+                        var data = [];
 
-                        return [];
+
+                        return data;
                     }())
                 }]
             });
@@ -390,7 +410,6 @@
                             var series = this.series[0];
                             setInterval(function () {
                                 var shift = series.data.length > 30;
-                                if (temperaturePoint != -100)
                                 series.addPoint([fechaPoint, temperaturePoint], true, shift);
                             }, 1000);
                         }
@@ -430,8 +449,8 @@
                     name: 'Lectura',
                     data: (function () {
                         // generate an array of random data
-
-                        return [];
+                        var data = [];
+                        return data;
                     }())
                 }]
             });
@@ -446,8 +465,7 @@
                             var series = this.series[0];
                             setInterval(function () {
                                 var shift = series.data.length > 30;
-                                if (humedadPoint != -100)
-                                    series.addPoint([fechaPoint, humedadPoint], true, shift);
+                                series.addPoint([fechaPoint, humedadPoint], true, shift);
                             }, 1000);
                         }
                     }
@@ -486,8 +504,8 @@
                     name: 'Lectura',
                     data: (function () {
                         // generate an array of random data
-
-                        return [];
+                        var data = [];
+                        return data;
                     }())
                 }]
             });
