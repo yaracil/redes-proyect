@@ -1,7 +1,7 @@
 <?php
 
 $option = $_GET['option'];
-$bd = new SQLite3('arduino.db');
+$bd = new SQLite3('/db/arduino.db');
 $data_points = array();
 ini_set('date.timezone', 'America/Mexico_City');
 $now = date("Y-m-d H:i:s");

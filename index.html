@@ -493,7 +493,7 @@
                     events: {
                         load: function () {
                             var series = this.series[0];
-                            setInterval(function () {
+                             setInterval(function () {
                                 var shift = series.data.length > 30;
                                 if (humedadPoint != -100)
                                     series.addPoint([fechaPoint, humedadPoint], true, shift);
