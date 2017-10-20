@@ -167,12 +167,12 @@
             <li class="breadcrumb-item">
                 <a href="#">Dashboard</a>
             </li>
-            <li class="breadcrumb-item active">Tablas de datos históricos</li>
+            <li class="breadcrumb-item active">Datos históricos</li>
         </ol>
         <!-- Example DataTables Card-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-table"></i> Data Table Example
+                <i class="fa fa-table"></i>Tablas de datos históricos
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -195,19 +195,6 @@
                         </tr>
                         </tfoot>
                         <tbody id="table">
-                        <script language="javascript" type="text/javascript">
-                            //$(document).ready(function () {
-                                // var table = [];
-                                $.getJSON("../db/gettingdb.php?option=tables", function (result) {
-                                    var HTML = "";
-                                    for (var i = 0; i < result.length; i++) {
-                                        HTML += "\<tr> <td>" + result[i].fecha + "\</td> <td>" + result[i].ritmo_cardiaco +"\</td> <td>" + result[i].temperatura + "\</td> <td>" + result[i].humedad + "\</td> </tr>";
-                                    }
-                                  //  document.write('updated').innerHTML+=result[0].fecha;
-                                    document.write(HTML);
-                                });
-                          //  });
-                        </script>
                         </tbody>
                     </table>
                 </div>
@@ -253,14 +240,26 @@
     <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Core plugin JavaScript-->
     <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Page level plugin JavaScript-->
+    <!-- Page level plugin JavaScript
     <script src="../vendor/datatables/jquery.dataTables.js"></script>
-    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>
+    <script src="../vendor/datatables/dataTables.bootstrap4.js"></script>-->
     <!-- Custom scripts for all pages-->
     <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <script src="../js/sb-admin-datatables.min.js"></script>
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // var table = [];
+            $.getJSON("../db/gettingdb.php?option=tables", function (result) {
+                var HTML = "";
+                for (var i = 0; i < result.length; i++) {
+                    HTML += "\<tr> <td>" + result[i].fecha + "\</td> <td>" + result[i].ritmo_cardiaco +"\</td> <td>" + result[i].temperatura + "\</td> <td>" + result[i].humedad + "\</td> </tr>";
+                }
+                document.getElementById('updated').innerHTML+=result[0].fecha;
+                document.getElementById('table').innerHTML+=HTML;
+            });
+        });
+    </script>
 </div>
 </body>
 
