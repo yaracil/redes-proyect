@@ -199,6 +199,60 @@
                 </div>
             </div>
         </div>
+
+        <div align="center">
+            <div align="center">
+                <button id="adelante" type="submit" onclick="action('adelante')" name="respuesta" value="adelante"
+                       required
+                        class="glyphicon glyphicon-arrow-left  btn-primary-lg btn-addon"/>
+                <img src="assets/images/flechaarriba.png"
+                     style="width: 50px; height: auto; margin: auto;">
+                </button></div>
+        </div>
+
+        <div align="center">
+
+            <button id="izquierda" type="submit" onclick="action('izquierda')" name="respuesta" value="izquierda"
+                   required
+                   class="glyphicon glyphicon-arrow-up  btn-primary-lg btn-addon"/>
+            <img
+                    src="assets/images/flechaizquierda.png"
+                    style="width: 50px; height: auto; margin: auto;"></button>
+            <b>
+                <input class="alert" TYPE=TEXT style="width: 120px; height: auto; text-align:center; font-weight: bold;" align="center" id="resp">
+            </b>
+            <button id="derecha" type="submit" onclick="action('derecha')" name="respuesta" value="derecha" required
+                   class="glyphicon glyphicon-arrow-left  btn-primary-lg btn-addon"/>
+            <img
+                    src="assets/images/flecha.png"
+                    style="width: 50px; height: auto; margin: auto;"></button></span></span>
+        </div>
+
+        <div align="center">
+                            <span><button id="abajo" onclick="action('abajo')" type="submit" name="respuesta"
+                                         value="abajo" required
+                                          class="glyphicon glyphicon-arrow-left  btn-primary-lg btn-addon"/>
+                                <img
+                                        src="assets/images/flechaabajo.png"
+                                        style="width: 50px; height: auto; margin: auto;"></button></span>
+
+        </div>
+        <br>
+
+
+        <script>
+
+            function action(act) {
+                var resp=document.getElementById("resp");
+                resp.value=act;
+
+
+                //document.write('El movimiento es: ' + act);
+
+                exec("python http://localhost:8000/archivosdephp/control/send.py " + act);
+
+            }
+        </script>
         <!--<div class="card mb-3">
             <div class="card-header">
                 <i class="fa fa-area-chart"></i> Sensor de Rítmo cardiaco
