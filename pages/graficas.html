@@ -9,19 +9,19 @@
     <meta name="author" content="">
     <title>Por tu Salud</title>
     <!-- Bootstrap core CSS-->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom fonts for this template-->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <!-- Custom styles for this template-->
-    <link href="css/sb-admin.css" rel="stylesheet">
-    <link rel="stylesheet" href="bower_components/highcharts/css/highcharts.css">
+    <link href="../css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="../bower_components/highcharts/css/highcharts.css">
 </head>
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <img src="assets/images/saludd.png" style="width: 60px; height: auto;  margin-top: 0px">
-    <a class="navbar-brand" href="index.html" style="margin: 10px;">Por tu Salud</a>
+    <img src="../assets/images/saludd.png" style="width: 60px; height: auto;">
+    <a class="navbar-brand" href="../index.html" style="margin: 10px;">Por tu Salud</a>
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
             data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -30,7 +30,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Panel de control">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="../index.html">
                     <i class="fa fa-fw fa-dashboard"></i>
                     <span class="nav-link-text">Panel de control</span>
                 </a>
@@ -39,19 +39,13 @@
 
             </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Gráficos en tiempo real">
-                <a class="nav-link" href="index.html">
+                <a class="nav-link" href="graficas.html">
                     <i class="fa fa-fw fa-area-chart"></i>
                     <span class="nav-link-text">Gráficos en tiempo real</span>
                 </a>
             </li>
-            <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Control remoto del agente">
-                <a class="nav-link" href="#">
-                    <i class="fa fa-fw fa-volume-control-phone"></i>
-                    <span class="nav-link-text">Control remoto del agente</span>
-                </a>
-            </li>
             <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Datos histórios">
-                <a class="nav-link" href="pages/tables.html">
+                <a class="nav-link" href="tables.html">
                     <i class="fa fa-fw fa-table"></i>
                     <span class="nav-link-text">Datos histórios</span>
                 </a>
@@ -64,10 +58,10 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseComponents">
                     <li>
-                        <a href="pages/historia_clinica.html">Historia clínica</a>
+                        <a href="historia_clinica.html">Historia clínica</a>
                     </li>
                     <li>
-                        <a href="pages/informacion_personal.html">Información personal</a>
+                        <a href="informacion_personal.html">Información personal</a>
                     </li>
                 </ul>
             </li>
@@ -79,13 +73,13 @@
                 </a>
                 <ul class="sidenav-second-level collapse" id="collapseExamplePages">
                     <li>
-                        <a href="pages/login.html">Iniciar sesión</a>
+                        <a href="login.html">Iniciar sesión</a>
                     </li>
                     <li>
-                        <a href="pages/register.html">Registrarse</a>
+                        <a href="register.html">Registrarse</a>
                     </li>
                     <li>
-                        <a href="pages/forgot-password.html">Olvidé mi contraseña</a>
+                        <a href="forgot-password.html">Olvidé mi contraseña</a>
                     </li>
                 </ul>
             </li>
@@ -149,7 +143,7 @@
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0 mr-lg-2">
                     <div class="input-group">
-                        <input class="form-control" type="text" placeholder="Search for...">
+                        <input class="form-control" type="text" placeholder="Buscar...">
               <span class="input-group-btn">
                 <button class="btn btn-primary" type="button">
                   <i class="fa fa-search"></i>
@@ -160,7 +154,7 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fa fa-fw fa-sign-out"></i>Logout</a>
+                    <i class="fa fa-fw fa-sign-out"></i>Cerrar sesión</a>
             </li>
         </ul>
     </div>
@@ -206,26 +200,23 @@
         </div>-->
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-area-chart"></i> Sensor de Rítmo cardiaco
+                <i class="fa fa- fa-heartbeat"></i> Sensor de Rítmo cardiaco
             </div>
             <div id="container1" class="card-body"></div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-area-chart"></i> Sensor de temperatura
+                <i class="fa fa fa-thermometer-empty"></i> Sensor de temperatura
             </div>
             <div class="card-body">
                 <div id="container2"></div>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
         <div class="card mb-3">
             <div class="card-header">
-                <i class="fa fa-area-chart"></i> Sensor de Humedad
+                <i class="fa fa fa-eyedropper"></i> Sensor de Humedad
             </div>
             <div id="container3" class="card-body"></div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
         </div>
 
 
@@ -235,7 +226,7 @@
     <footer class="sticky-footer">
         <div class="container">
             <div class="text-center">
-                <small>Copyright © Your Website 2017</small>
+                <small>Copyright © Redes de Computadoras - Equipo No.5 2017</small>
             </div>
         </div>
     </footer>
@@ -257,19 +248,19 @@
                 <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="pages/login.html">Logout</a>
+                    <a class="btn btn-primary" href="login.html">Cerrar sesión</a>
                 </div>
             </div>
         </div>
     </div>
     <!-- Bootstrap core JavaScript-->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/popper/popper.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="../vendor/jquery/jquery.min.js"></script>
+    <script src="../vendor/popper/popper.min.js"></script>
+    <script src="../vendor/bootstrap/js/bootstrap.min.js"></script>
     <!-- Core plugin JavaScript-->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="../vendor/jquery-easing/jquery.easing.min.js"></script>
     <!-- Custom scripts for all pages-->
-    <script src="js/sb-admin.min.js"></script>
+    <script src="../js/sb-admin.min.js"></script>
     <!-- Custom scripts for this page-->
     <!-- Toggle between fixed and static navbar-->
     <script>
@@ -289,8 +280,8 @@
 
     </script>
 
-    <script src="bower_components/highcharts/js/highcharts.js"></script>
-    <script src="bower_components/highcharts/js/modules/exporting.js"></script>
+    <script src="../bower_components/highcharts/js/highcharts.js"></script>
+    <script src="../bower_components/highcharts/js/modules/exporting.js"></script>
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -316,13 +307,13 @@
              cache: false
              });
              }*/
-            var temperaturePoint = 0;
-            var humedadPoint = 0;
-            var ritmoCardiacoPoint = 0;
+            var temperaturePoint = -100;
+            var humedadPoint = -100;
+            var ritmoCardiacoPoint = -100;
             var fechaPoint = (new Date()).getTime();
             //z = updateDatos();
             function updateDatos() {
-                $.getJSON("db/gettingdb.php?option=update", function (result) {
+                $.getJSON("../db/gettingdb.php?option=update", function (result) {
                     fechaPointt = (new Date(result[0].fecha)).getTime();
                     humedadPointt = parseInt(result[0].humedad);
                     temperaturePointt = parseInt(result[0].temperatura);
@@ -353,7 +344,8 @@
                             setInterval(function () {
                                 updateDatos();
                                 var shift = series.data.length > 30;
-                                series.addPoint([fechaPoint, ritmoCardiacoPoint], true, shift);
+                                if (ritmoCardiacoPoint != -100)
+                                    series.addPoint([fechaPoint, ritmoCardiacoPoint], true, shift);
                             }, 1000);
                         }
                     }
@@ -392,10 +384,7 @@
                     name: 'Random data',
                     data: (function () {
                         // generate an array of random data
-                        var data = [];
-
-
-                        return data;
+                        return [];
                     }())
                 }]
             });
@@ -410,7 +399,8 @@
                             var series = this.series[0];
                             setInterval(function () {
                                 var shift = series.data.length > 30;
-                                series.addPoint([fechaPoint, temperaturePoint], true, shift);
+                                if (temperaturePoint != -100)
+                                    series.addPoint([fechaPoint, temperaturePoint], true, shift);
                             }, 1000);
                         }
                     }
@@ -449,8 +439,7 @@
                     name: 'Lectura',
                     data: (function () {
                         // generate an array of random data
-                        var data = [];
-                        return data;
+                        return [];
                     }())
                 }]
             });
@@ -465,7 +454,8 @@
                             var series = this.series[0];
                             setInterval(function () {
                                 var shift = series.data.length > 30;
-                                series.addPoint([fechaPoint, humedadPoint], true, shift);
+                                if (humedadPoint != -100)
+                                    series.addPoint([fechaPoint, humedadPoint], true, shift);
                             }, 1000);
                         }
                     }
@@ -504,8 +494,7 @@
                     name: 'Lectura',
                     data: (function () {
                         // generate an array of random data
-                        var data = [];
-                        return data;
+                        return [];
                     }())
                 }]
             });
